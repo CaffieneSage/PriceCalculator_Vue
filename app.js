@@ -5,6 +5,7 @@ const vm = Vue.createApp({
       items: 0,
       total: 0,
       taxRate: 1.23,
+      tax: 0,
     };
   },
 
@@ -13,7 +14,7 @@ const vm = Vue.createApp({
       if (this.items == 0) {
         return 0;
       } else {
-        return this.total + this.taxRate;
+        return this.tax + this.total;
       }
     },
   },
@@ -33,9 +34,7 @@ const vm = Vue.createApp({
     },
     updatePrice() {
       this.total = this.price * this.items;
-    },
-    setTax() {
-      this;
+      this.tax = this.total * (this.taxRate / 10);
     },
   },
 }).mount("#app");
